@@ -4,7 +4,12 @@ const util = require('../util')
 
 const setTodos = R.set(R.lensProp('todos'))
 
+const setMessage = R.set(R.lensProp('message'))
+
 module.exports = util.setupReducer([])
+	.on(constants.EDIT_MESSAGE, function (action, oldState) {
+		return setMessage(action.message)
+	})
 	.on(constants.ADD_TODO, function (action, oldState) {
 
 	})
@@ -15,6 +20,6 @@ module.exports = util.setupReducer([])
 
 	})
 	.on(constants.REMOVE_TODO, function (action, oldState) {
-		
+
 	})
 	.create()

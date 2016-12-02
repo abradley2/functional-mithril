@@ -1,3 +1,4 @@
+const m = require('mithril')
 const R = require('ramda')
 
 const reducers = [
@@ -7,15 +8,15 @@ const reducers = [
 
 const store = m.prop({})
 
-exports.dispatch = function (action) {
+exports.dispatchAction = function (action) {
 	if (!action.type) throw new TypeError('must specify action.type')
 
 	store(R.reduce(
 		function (currentState, reduceFunc) {
 			const result = reduceFunc(action, currentState)
 
-			return (result === currentState) ? 
-				currentState 
+			return (result === currentState) ?
+				currentState
 				: result(currentState)
 		},
 		store(),

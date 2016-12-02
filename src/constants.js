@@ -4,6 +4,7 @@ exports.OPEN_DROPDOWN = 'OPEN_DROPDOWN'
 
 
 // todo actions
+exports.EDIT_MESSAGE = 'EDIT_MESSAGE'
 exports.ADD_TODO = 'ADD_TODO'
 exports.EDIT_TODO = 'EDIT_TODO'
 exports.TOGGLE_TODO_COMPLETED = 'TOGGLE_TODO_COMPLETED'
