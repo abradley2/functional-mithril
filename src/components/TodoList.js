@@ -9,7 +9,7 @@ module.exports = function () {
 	return m('div', [
 		m('h3', 'hello world'),
 		m('input', {
-			value: state.message,
+			value: state.message || '',
 			oninput: function (e) {
 				store.dispatchAction({
 					type: constants.EDIT_MESSAGE,
