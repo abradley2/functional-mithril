@@ -2,20 +2,26 @@ const m = require('mithril')
 const store = require('../store')
 const constants = require('../constants')
 
-module.exports = function () {
+const actions = {
+	editMessage: function (message) {
+		store.dispatchAction({
+			type: constants.EDIT_MESSAGE,
+			message: message
+		})
+	}
+}
+
+function TodoList (ctrl, args) {
 	const state = store.getState()
 	const filter = m.route.param('filter')
 
-	return m('div', [
-		m('h3', 'hello world'),
-		m('input', {
+	return m('div.container', [
+		m('input.form-control', {
 			value: state.message || '',
-			oninput: function (e) {
-				store.dispatchAction({
-					type: constants.EDIT_MESSAGE,
-					message: e.target.value
-				})
-			}
-		})
+			oninput: m.withAttr('value', actions.editMessage)
+		}),
+		m('h3', state.message)
 	])
 }
+
+module.exports = {view: TodoList}

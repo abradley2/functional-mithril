@@ -1,7 +1,9 @@
+// configuration
+// set to DEV for time travel debug, set to PROD otherwise
+exports.DEBUG = true
+
 // view actions
 exports.OPEN_DROPDOWN = 'OPEN_DROPDOWN'
-
-
 
 // todo actions
 exports.EDIT_MESSAGE = 'EDIT_MESSAGE'

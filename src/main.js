@@ -4,13 +4,6 @@ const store = require('./store')
 
 const TodoList = require('./components/TodoList')
 
-const TodoListView = {
-	controller: function () {
-
-	},
-	view: TodoList
-}
-
 document.addEventListener('DOMContentLoaded', function () {
 
 	const appContainer = document.createElement('div')
@@ -20,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	m.route.mode = 'pathname'
 
 	m.route(appContainer, '/', {
-		'/': TodoListView,
-		'/:filter': TodoListView
+		'/': TodoList,
+		'/:filter': TodoList
 	})
 
 })
