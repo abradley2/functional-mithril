@@ -3,7 +3,8 @@
 exports.DEBUG = true
 
 // view actions
-exports.OPEN_DROPDOWN = 'OPEN_DROPDOWN'
+exports.SET_VIEW_STATE = 'SET_VIEW_STATE'
+exports.CLEAR_VIEW_STATE = 'CLEAR_VIEW_STATE'
 
 // todo actions
 exports.EDIT_MESSAGE = 'EDIT_MESSAGE'

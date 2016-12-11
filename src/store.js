@@ -5,7 +5,7 @@ const constants = require('./constants')
 
 const reducers = [
 
-	require('./reducers/view'),
+	require('./reducers/viewState'),
 	require('./reducers/todos')
 
 ].concat(constants.DEBUG ? [util.recordActions] : [])
@@ -38,8 +38,8 @@ function dispatchAction (action) {
 
 if (constants.DEBUG) {
 	window.$debug = {
-		replayActions: function () {
-			dispatchAction(util.replayActions(store))
+		replayActions: function (limit) {
+			dispatchAction(util.replayActions(store, limit))
 		},
 		getState: function () {
 			return store()

@@ -48,8 +48,13 @@ exports.recordActions = function (action, oldState) {
 	)
 }
 
-exports.replayActions = function (store) {
-	const previousActions = store().__previousActions__ || []
+exports.replayActions = function (store, limit) {
+	const recorded = R.defaultTo([], store().__previousActions__)
+
+	const previousActions = R.drop(
+		(limit ? (recorded.length - limit) : 0),
+		recorded
+	)
 
 	if (previousActions.length === 0) return function () {}
 
@@ -82,8 +87,12 @@ exports.replayActions = function (store) {
 				m.startComputation()
 				dispatchAction(action)
 				m.endComputation()
-				if (i !== (promiseChain.length - 1)) {
+				if (i !== promiseChain.length - 1) {
 					resolveChain(asyncs, i + 1)
+				} else {
+					store(
+						R.set(R.lensProp('__previousActions__'), recorded, store())
+					)
 				}
 			})
 		}

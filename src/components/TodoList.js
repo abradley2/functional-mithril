@@ -1,6 +1,7 @@
 const m = require('mithril')
 const store = require('../store')
 const constants = require('../constants')
+const DropdownSelect = require('./DropdownSelect')
 
 const actions = {
 	editMessage: function (message) {
@@ -20,7 +21,17 @@ function TodoList (ctrl, args) {
 			value: state.message || '',
 			oninput: m.withAttr('value', actions.editMessage)
 		}),
-		m('h3', state.message)
+		m('h3', state.message),
+		m('hr'),
+		m(DropdownSelect, {
+			id: 'test-dropdown',
+			placeholder: '...',
+			chooseText: 'category:',
+			options: [
+				{label: 'Business', value: 1},
+				{label: 'Pleasure', value: 2}
+			]
+		})
 	])
 }
 
