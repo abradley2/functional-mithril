@@ -31,6 +31,16 @@ module.exports = util.setupReducer({})
 		return setViewState(newState)
 	})
 	.on(constants.CLEAR_VIEW_STATE, function (action, oldState) {
-		return oldState
+		if (!action.category) return setViewState({})
+
+		const viewState = R.defaultTo({}, oldState.viewState)
+
+		const newState = R.set(
+			R.lensProp(action.category),
+			{},
+			viewState
+		)
+
+		return setViewState(newState)
 	})
 	.create()
