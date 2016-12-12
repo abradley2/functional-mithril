@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	m.route(appContainer, '/', {
 		'/': TodoList,
-		'/:filter': TodoList
+		'/app/home': TodoList
 	})
 
 })

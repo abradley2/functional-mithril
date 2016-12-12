@@ -28,8 +28,6 @@ module.exports = util.setupReducer({})
 			)
 		)(action.value)
 
-		console.log(newState)
-
 		return setViewState(newState)
 	})
 	.on(constants.CLEAR_VIEW_STATE, function (action, oldState) {
