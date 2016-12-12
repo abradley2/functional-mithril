@@ -20,6 +20,11 @@
   "homepage": "https://github.com/abradley2/functional-mithril-boilerplate",
   "dependencies": {
     "aphrodite": "^1.1.0",
+    "co": "^4.6.0",
+    "koa": "^1.2.4",
+    "koa-router": "^5.4.0",
+    "koa-session": "^3.4.0",
+    "koa-static": "^2.0.0",
     "mithril": "^0.2.5",
     "ramda": "^0.22.1"
   },
