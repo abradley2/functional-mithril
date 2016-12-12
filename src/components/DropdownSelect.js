@@ -2,6 +2,7 @@ const m = require('mithril')
 const R = require('ramda')
 const store = require('../store')
 const constants = require('../constants')
+const Link = require('./Link')
 
 const actions = {
 	openDropdown: function (dropdownId) {
@@ -79,7 +80,7 @@ function DropdownSelect (ctrl, args) {
 		]),
 		m('ul.dropdown-menu', args.options.map(function (opt) {
 			return m('li', [
-				m('a', {
+				m(Link, {
 					style: 'cursor:pointer;',
 					href: (opt.href ? opt.href : 'javascript:void(0);'),
 					onclick: function () {

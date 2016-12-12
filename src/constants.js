@@ -2,6 +2,9 @@
 // set to DEV for time travel debug, set to PROD otherwise
 exports.DEBUG = true
 
+// app actions
+exports.ROUTE = 'ROUTE'
+
 // view actions
 exports.SET_VIEW_STATE = 'SET_VIEW_STATE'
 exports.CLEAR_VIEW_STATE = 'CLEAR_VIEW_STATE'
