@@ -1,6 +1,7 @@
 const m = require('mithril')
 const store = require('../store')
 const constants = require('../constants')
+const Layout = require('./Layout')
 const DropdownSelect = require('./DropdownSelect')
 
 const actions = {
@@ -16,7 +17,7 @@ function TodoList (ctrl, args) {
 	const state = store.getState()
 	const filter = m.route.param('filter')
 
-	return m('div.container', [
+	return m(Layout, [
 		m('input.form-control', {
 			value: state.message || '',
 			oninput: m.withAttr('value', actions.editMessage)

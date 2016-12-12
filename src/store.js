@@ -17,6 +17,8 @@ function dispatchAction (action) {
 
 	if (!action.type) throw new TypeError('must specify action.type')
 
+	console.log('ACTION = ', action)
+
 	store(R.reduce(
 		function (currentState, reduceFunc) {
 			const result = reduceFunc(action, currentState)

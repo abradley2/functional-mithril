@@ -20,13 +20,23 @@ const actions = {
 
 function Link (ctrl, args, children) {
 	return m('a' + (args.className || ''), R.merge({
-		config: function () {
-			if (args.href.indexOf('javascript:void(0)') === -1) return
+		href: args.route || location.pathname,
+		config: function (el) {
+			el.onclick = function (e) {
+				e.preventDefault()
 
-			actions.route(args.href, args.replaceState || false)
+				args.onclick.call(args, e)
 
-			if (args.clearViewState !== false) {
-				actions.clearViewState()
+				if (!args.href) {
+					return
+				}
+
+				actions.route(args.href, args.replaceState || false)
+
+				if (args.clearViewState !== false) {
+					actions.clearViewState()
+				}
+
 			}
 		}
 	}, args), args.innerText || children)

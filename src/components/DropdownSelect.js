@@ -66,13 +66,15 @@ function DropdownSelect (ctrl, args) {
 
 	const isOpen = viewModel.open ? '.open' : ''
 
-	return m('div.dropdown' + isOpen, {
-		onclick: function (e) {
-			e.stopPropagation()
-		}
-	}, [
+	return m('div.dropdown' + isOpen, [
 		m('button' + buttonClass, {
-			onclick: actions.openDropdown.bind(actions, args.id)
+			onclick: function (e) {
+				e.stopPropagation()
+				if (viewModel.open) {
+					return actions.closeDropdown(args.id)
+				}
+				return actions.openDropdown(args.id)
+			}
 		}, [
 			(args.chooseText ? m('span.small', args.chooseText + ' ') : null),
 			dropdownLabel,
@@ -82,8 +84,8 @@ function DropdownSelect (ctrl, args) {
 			return m('li', [
 				m(Link, {
 					style: 'cursor:pointer;',
-					href: (opt.href ? opt.href : 'javascript:void(0);'),
-					onclick: function () {
+					route: opt.route || false,
+					onclick: function (e) {
 						if (args.onSelect) {
 							args.onSelect(opt)
 						}
